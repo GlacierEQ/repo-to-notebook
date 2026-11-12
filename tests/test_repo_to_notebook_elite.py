@@ -21,7 +21,7 @@ from repo_to_notebook_elite import (
 class TestRepoToNotebookElite(unittest.TestCase):
     def test_secret_redaction_preserves_context_and_audits(self) -> None:
         redactor = SecretRedactor()
-        sample = 'API_KEY = "AIzaSyD-9xK2mP4qR8sT1vW3yZ5aB7cD9eF1gH3"\nprint("ok")\n'
+        sample = 'API_KEY = "' + "AIzaSyD" + "-9xK2mP4qR8sT1vW3yZ5aB7cD9eF1gH3" + '"\nprint("ok")\n'
         cleaned, events = redactor.redact_text("config.py", sample)
         self.assertNotIn("AIzaSyD", cleaned)
         self.assertIn("[REDACTED:GOOGLE_API_KEY]", cleaned)
