@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-and-self-audit:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.11", "3.12"]
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Run self-audit and bundle smoke test
+        run: |
+          python repo_to_notebook_elite.py audit .
+          python repo_to_notebook_elite.py bundle . -o /tmp/notebooklm_out
+          python repo_to_notebook_elite.py colab . -o /tmp/repo_bundle.ipynb
