@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "repo-to-notebook"
+version = "0.3.0"
+description = "GlacierEQ Repository-to-NotebookLM & Colab/Kaggle Engine (v0.3.0-elite)"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = []
+
+[project.scripts]
+repo-to-notebook = "repo_to_notebook_elite:main"
+
+[tool.setuptools]
+py-modules = ["repo_to_notebook_elite"]
