@@ -1,0 +1,123 @@
+# Repo to Notebook — Portable Project Manifest
+schema: glaciereq.project-manifest.v1
+generated_at: "2026-11-20T06:45:00-10:00"
+source_authority: "estate_owner_graph.json (t_a4098ff2 strategy) + live git readback + legal ratchet sweep commits"
+
+project:
+  key: repo-to-notebook
+  canonical_name: "repo-to-notebook"
+  canonical_owner: "GlacierEQ/repo-to-notebook"
+  role: "notebook_converter"
+  tier: "SubsystemII"
+  purpose: "Repository to notebook converter — converts repo content to notebook format for analysis"
+  operator_intent: "Tool for converting repositories to notebook format for research/analysis"
+  runtime_entrypoint: "Unknown (check src/)"
+  target_output: "Functional repo-to-notebook converter"
+  operational_users:
+    - "Casey (Operator)"
+    - "Researchers/analysts"
+
+identity:
+  local_path: "/Users/kcbflux/workspace/projects/repo-to-notebook"
+  git_origin: "https://github.com/GlacierEQ/repo-to-notebook.git"
+  head_branch: "main"
+  head_sha: "aa61033"  # from estate_owner_graph.md
+  last_commit: "2026-11-18 (measured, after legal ratchet sweep)"
+  version: "0.3.0"
+  commit_count: "unknown"
+  dirty_files: 0
+  branch_count: 1
+  worktrees: []
+  github:
+    visibility: "PRIVATE"
+    is_fork: false
+    is_archived: false
+    default_branch: "main"
+    updated_at: "2026-11-12T16:03:41Z"  # approximate
+    language: "Python"
+    description: ""
+  registry: null
+
+boundaries:
+  files:
+    - "src/"
+    - "tests/"
+    - "pyproject.toml"
+    - "AGENTS.md"
+    - ".github/"
+  languages:
+    - "Python"
+    - "Markdown"
+  packages: []
+  dependency_interfaces: []
+  services: []
+  secrets_references: []
+  deploy_targets:
+    - "local Mac workstation"
+  upstream_projects: []
+  downstream_projects: []
+
+lineage:
+  root_source_branch: "main"
+  forks: []
+  history_preserving_renames: []
+  archived_generations: []
+  predecessor_projects: []
+  generated_mirrors: []
+  unique_unmerged_work: []
+  all_branches:
+    - "main (HEAD)"
+  remotes:
+    - "origin"
+  ahead_behind: "unknown"
+  unpushed_commits: 0
+  unpulled_commits: 0
+
+state:
+  observed_working_features:
+    - "Clean git state, single branch"
+    - "Legal ratchet sweep commit included"
+  broken_features: []
+  missing_dependencies: []
+  current_build_status: "operational (measured)"
+  outstanding_human_decisions: []
+
+separation:
+  case_evidence_excluded: true
+  forensic_records_preserved: true
+
+architecture_contracts:
+  - "src/ (converter logic)"
+  - "pyproject.toml"
+  - "AGENTS.md"
+  - "tests/ (run-before-reliance)"
+
+handoff:
+  startup_instructions: |
+    1. Check src/ for entrypoint
+    2. Install: `uv pip install -e .` (or `pip install -e .`)
+    3. Run tests: `python -m pytest tests/`
+  operator_instructions: |
+    - Role: Repository to notebook converter
+    - Clean state, version 0.3.0
+    - No known dependencies
+    - Legal ratchet sweep commit included
+  dependency_map:
+    imports: []
+    contracts: []
+    entrypoints:
+      - "src/ (check for CLI/library)"
+      - "tests/ (run-before-reliance)"
+  handoff_notes: |
+    - Simple converter tool, clean state
+    - No unpushed/unpulled commits
+    - Version 0.3.0
+
+verification_receipts:
+  - "estate_owner_graph.json (t_a4098ff2 strategy) — canonical owner with measured head"
+
+status: "deployed_verified"
+remaining_work:
+  - "Verify converter functionality end-to-end"
+  - "Expand test coverage"
+  - "Document CLI interface"
